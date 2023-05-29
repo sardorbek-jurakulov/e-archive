@@ -1,9 +1,11 @@
-1. oddiy welcome page hosil qilish
-2. Express yordamida welcome pagega qilishni yozish
-3. Saytni deploy qilib to'g'ri ishlayotganini tekshirib ko'rish
-4. DB ni shakillantirish, DB arxitekturasini tuzish, ichiga 5 tadan moc data kiritib chiqish.
-6. routelar yozib chiqish
-7. Routelar uchun controllerlar yozib chiqish
-8. routerlarni tekshirib olish, localda production versiyada
-9. temolate chizib responcega templatelarni berib yuborish, 
-10. Login qo'shish. 
+1. oddiy welcome page hosil qilish. Status: Done
+2. Express yordamida welcome pagega murojat qilishni yozish. Status: Done
+3. Saytni deploy qilib to'g'ri ishlayotganini tekshirib ko'rish. Status: Done
+
+4. DB ni shakillantirish, DB arxitekturasini tuzish, ichiga 5 tadan moc data kiritib chiqish. Status: In Process
+
+6. routelar yozib chiqish. Status: waiting its queue
+7. Routelar uchun controllerlar yozib chiqish. Status: waiting its queue
+8. routerlarni tekshirib olish, localda production versiyada. Status: waiting its queue
+9. temolate chizib responcega templatelarni berib yuborish.Status: waiting its queue
+10. Login qo'shish. Status: waiting its queue

@@ -10,3 +10,7 @@ const departmentSchema = new mongoose.Schema({
     minlength: [2, 'A department name must have more or equal then 1 character'],
   },
 });
+
+const Department = mongoose.model('Department', departmentSchema);
+
+module.exports = User;
