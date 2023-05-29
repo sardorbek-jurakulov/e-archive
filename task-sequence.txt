@@ -1,0 +1,9 @@
+1. oddiy welcome page hosil qilish
+2. Express yordamida welcome pagega qilishni yozish
+3. Saytni deploy qilib to'g'ri ishlayotganini tekshirib ko'rish
+4. DB ni shakillantirish, DB arxitekturasini tuzish, ichiga 5 tadan moc data kiritib chiqish.
+6. routelar yozib chiqish
+7. Routelar uchun controllerlar yozib chiqish
+8. routerlarni tekshirib olish, localda production versiyada
+9. temolate chizib responcega templatelarni berib yuborish, 
+10. Login qo'shish. 
