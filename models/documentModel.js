@@ -5,12 +5,13 @@ const documentSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Необходимо ввести номер документа'],
     trim: true,
+    unique: true,
   },
   // TODO: docType qiymatlarini enumda berish, default qiymat berish
   docType: {
     type: String,
     required: [true, 'Необходимо ввести тип документа'],
-    trim: ture,
+    trim: true,
   },
   title: {
     type: String,
@@ -28,7 +29,7 @@ const documentSchema = new mongoose.Schema({
   }
 });
 
-userSchema.pre(/^find/, function (next) {
+documentSchema.pre(/^find/, function (next) {
   this.populate({
     path: 'department',
     select: 'name',
