@@ -64,8 +64,6 @@ userSchema.pre(/^find/, function (next) {
   next();
 });
 
-// userSchema.index({ department: 1, user: 1 }, { unique: true });
-
 const User = mongoose.model('User', userSchema);
 
 module.exports = User;
