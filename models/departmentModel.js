@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const departmentSchema = new mongoose.Schema({
   name: {
     type: String,
-    require: [true, 'A department must have a name'],
+    require: [true, 'Отдел должен иметь название'],
     unique: true,
     trim: true,
-    maxlength: [100, 'A department name must have less or equal then 100 characters'],
-    minlength: [2, 'A department name must have more or equal then 1 character'],
+    maxlength: [100, 'Название отдела должно содержать меньше или равно 100 символов.'],
+    minlength: [2, 'Название отдела должно состоять не менее чем из 1 символа.'],
   },
 });
 
