@@ -1,5 +1,29 @@
 extends base
 
 block content
-  main
-    h1.display-1 Hello from e-archive.airtech.uz
+  main.container
+    h2.text-center.mt-5.mb-4 Документы отделения "#{documents[0].department.name}" за 2023 г.
+    - let documentNumber = 1
+      .table-responsive
+        table.table.table-bordered
+          thead
+            tr.text-center
+              th №
+              th Тип документа
+              th Номер документа
+              th Заголовок документа
+              th Краткая информация о документе
+              th Скачать документ
+          tbody
+          each document in documents
+            tr
+              td.text-center= documentNumber
+              td.text-center= document.docType
+              td.text-center= document.number
+              td.text-center= document.title
+              td.text-center= document.description
+              td.text-center
+                img(src="/images/download.png", alt="Скачать", width="25", height="25")
+              - documentNumber++
+
+      

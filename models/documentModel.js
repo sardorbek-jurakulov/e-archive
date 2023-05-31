@@ -22,6 +22,10 @@ const documentSchema = new mongoose.Schema({
   // file: {
   //   type: String,
   // },
+  description: {
+    type: String,
+    trim: true,
+  },
   department: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Department',
