@@ -1,10 +1,13 @@
 header.container-fluid.p-2.header-bg-color
   div.container.d-flex.align-items-center.justify-content-between
     div.d-flex.align-items-center
-      img(src='/images/default-avatar.png' alt='Avatar' width='50' height='50')
+      img.avatar-color(src='/images/default-avatar.svg' alt='Avatar' width='50' height='50')
       p.mx-3.mb-0 FirstName LastName MiddleName 
     div
-      button.btn.btn-success Отделы
+      button.btn.btn-success.ms-2 Документы
+      button.btn.btn-success.ms-2 Отделы
       button.btn.btn-success.ms-2 Пользователи
+      button.btn.btn-success.ms-2.px-2.py-1(onclick="window.print()")
+        img.printer-color(src='/images/print.svg', alt='Распечатать' width='30' height='30')
       button.btn.btn-danger.ms-5 Выход
 
