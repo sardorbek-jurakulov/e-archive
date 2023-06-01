@@ -31,7 +31,7 @@ app.all('*', (req, res, next) => {
     host: req.get('host'),
     pathname: req.originalUrl
   });
-  res.status(404).render('404', {
+  res.status(404).render('errorPage', {
     message: `Указанный адрес "${appealedAddress}" не существует`,
   });
 });

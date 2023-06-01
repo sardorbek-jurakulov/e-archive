@@ -7,24 +7,26 @@ block content
       h3.text-center.mt-5.mb-5= `Документы отделения "${documents[0].department.name}" за 2023 г.`
       if roleOfVisitor === 'admin'
         button.btn.btn-success.mb-2 + Добавить запис
-        .table-responsive
-          table.table.table-bordered
-            thead
-              tr.text-center
-                th №
-                th Тип документа
-                th Номер документа
-                th Заголовок документа
-                th Краткая информация о документе
+      .table-responsive
+        table.table.table-bordered
+          thead
+            tr.text-center
+              th №
+              th Тип документа
+              th Номер документа
+              th Заголовок документа
+              th Краткая информация о документе
+              if roleOfVisitor === 'admin'
                 th Кнопки действий
-            tbody
-            each document in documents
-              tr
-                td.text-center= elementNumber
-                td.text-center= document.docType
-                td.text-center= document.number
-                td.text-center= document.title
-                td.text-center= document.description
+          tbody
+          each document in documents
+            tr
+              td.text-center= elementNumber
+              td.text-center= document.docType
+              td.text-center= document.number
+              td.text-center= document.title
+              td.text-center= document.description
+              if roleOfVisitor === 'admin'
                 td.d-flex.align-items-center.justify-content-center
                   button.btn.btn-success
                     img(src='/images/download.svg', alt='Скачать', width='25', height='25')
@@ -32,30 +34,59 @@ block content
                     img(src='/images/edit.svg', alt='Скачать', width='25', height='25')
                   button.btn.btn-danger
                     img(src='/images/delete.svg', alt='Скачать', width='25', height='25')
-                - elementNumber++
+              - elementNumber++
     else if sendingInfoAbout === 'users'
-      table.table.table-bordered
-        thead
-          tr.text-center
-            th №
-            th Ф.И.О
-            th Табельный номер
-            th Пароль
-            th Статус пользователь
-            th Кнопки действий
-        tbody
-        each user in users
-          tr
-            td.text-center= userNumber
-            td.text-center `${user.lastName user.firstName user.middleName}`
-            td.text-center= user.personnelNumber
-            td.text-center= user.password
-            td.text-center= user.role
-            td.d-flex.align-items-center.justify-content-center
-              button.btn.btn-success
-                img(src='/images/download.svg', alt='Скачать', width='25', height='25')
-              button.btn.btn-warning.mx-2
-                img(src='/images/edit.svg', alt='Скачать', width='25', height='25')
-              button.btn.btn-danger
-                img(src='/images/delete.svg', alt='Скачать', width='25', height='25')
+      h3.text-center.mt-5.mb-5= `Сотрудники отдела "${users[0].department.name}".`
+      if roleOfVisitor === 'admin' || roleOfVisitor === 'super-admin'
+        button.btn.btn-success.mb-2 + Добавить запис
+      .table-responsive
+        table.table.table-bordered
+          thead
+            tr.text-center
+              th №
+              th Ф.И.О
+              th Табельный номер
+              th Пароль
+              th Статус пользователь
+              if roleOfVisitor === 'admin'
+                th Кнопки действий
+          tbody
+          each user in users
+            tr
+              td.text-center= elementNumber
+              td.text-center= user.lastName + ' ' + user.firstName + ' ' +user.middleName
+              td.text-center= user.personnelNumber
+              td.text-center= user.password
+              td.text-center= user.role
+              if roleOfVisitor === 'admin'
+                td.d-flex.align-items-center.justify-content-center
+                  button.btn.btn-success
+                    img(src='/images/download.svg', alt='Скачать', width='25', height='25')
+                  button.btn.btn-warning.mx-2
+                    img(src='/images/edit.svg', alt='Скачать', width='25', height='25')
+                  button.btn.btn-danger
+                    img(src='/images/delete.svg', alt='Скачать', width='25', height='25')
+              - elementNumber++
+    else if sendingInfoAbout === 'departments'
+      h3.text-center.mt-5.mb-5= 'Отделы, ведущие перечень документов на сайте "e-archive"'
+      button.btn.btn-success.mb-2 + Добавить запис
+      .table-responsive
+        table.table.table-bordered
+          thead
+            tr.text-center
+              th №
+              th Название отдела 
+              th Кнопки действий
+          tbody
+          each department in departments
+            tr
+              td.text-center= elementNumber
+              td.text-center= department.name
+              td.d-flex.align-items-center.justify-content-center
+                button.btn.btn-success
+                  img(src='/images/download.svg', alt='Скачать', width='25', height='25')
+                button.btn.btn-warning.mx-2
+                  img(src='/images/edit.svg', alt='Скачать', width='25', height='25')
+                button.btn.btn-danger
+                  img(src='/images/delete.svg', alt='Скачать', width='25', height='25')
             - elementNumber++

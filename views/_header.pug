@@ -5,13 +5,13 @@ header.container-fluid.p-2.header-bg-color
       p.mx-3.mb-0 FirstName LastName MiddleName 
     div
       if roleOfVisitor === 'user'
-        button.btn.btn-success.ms-2 Документы
+        a.btn.btn-success.ms-2(href='/documents' target='_self') Документы
       if roleOfVisitor === 'admin'
-        button.btn.btn-success.ms-2 Документы
-        button.btn.btn-success.ms-2 Пользователи
+        a.btn.btn-success.ms-2(href='/documents' target='_self') Документы
+        a.btn.btn-success.ms-2(href='/users' target='_self') Пользователи
       if roleOfVisitor === 'super-admin'
-        button.btn.btn-success.ms-2 Отделы
-        button.btn.btn-success.ms-2 Пользователи
+        button.btn.btn-success.ms-2(href='/departments' target='_self') Отделы
+        button.btn.btn-success.ms-2(href='/users' target='_self') Пользователи
       button.btn.btn-success.ms-2.px-2.py-1(onclick="window.print()")
         img.printer-color(src='/images/print.svg', alt='Распечатать' width='30' height='30')
       button.btn.btn-danger.ms-5 Выход

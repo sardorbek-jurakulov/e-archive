@@ -2,11 +2,11 @@ const User = require('../models/userModel');
 
 
 exports.getAllUsers = async (req, res, next) => {
-  const allUsers = await User.find();
+  const users = await User.find();
   res.render('mainContentHolder', {
     roleOfVisitor: 'admin',
     sendingInfoAbout: 'users',
-    allUsers,
+    users,
   });
 };
 

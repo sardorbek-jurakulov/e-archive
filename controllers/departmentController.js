@@ -1,13 +1,12 @@
 const Department = require('../models/departmentModel');
 
 exports.getAllDepartments = async (req, res, next) => {
-  const allDepartments = await Department.find();
+  const departments = await Department.find();
 
-  res.status(200).json({
-    status: 'success',
-    data: {
-      allDepartments,
-    },
+  res.render('mainContentHolder', {
+    roleOfVisitor: 'super-admin',
+    sendingInfoAbout: 'departments',
+    departments,
   });
 };
 
