@@ -1,5 +1,6 @@
 const path = require('path');
 const express = require('express');
+const url = require('url');
 
 const viewRoutes = require('./routes/viewRoutes');
 const departmentRoutes = require('./routes/departmentRoutes');
@@ -24,5 +25,14 @@ app.use('/', viewRoutes);
 app.use('/departments', departmentRoutes);
 app.use('/users', userRoutes);
 app.use('/documents', documentRoutes);
-
+app.all('*', (req, res, next) => {
+  const appealedAddress = url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl
+  });
+  res.status(404).render('404', {
+    message: `Указанный адрес "${appealedAddress}" не существует`,
+  });
+});
 module.exports = app;
