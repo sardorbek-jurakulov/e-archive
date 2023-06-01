@@ -3,11 +3,10 @@ const User = require('../models/userModel');
 
 exports.getAllUsers = async (req, res, next) => {
   const allUsers = await User.find();
-  res.status(200).json({
-    status: 'success',
-    data: {
-      allUsers,
-    },
+  res.render('mainContentHolder', {
+    roleOfVisitor: 'admin',
+    sendingInfoAbout: 'users',
+    allUsers,
   });
 };
 

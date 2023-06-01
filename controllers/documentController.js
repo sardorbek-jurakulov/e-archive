@@ -1,20 +1,12 @@
-const orgDocument = require('../models/documentModel');
+const Document = require('../models/documentModel');
 
 exports.getAllDocuments = async (req, res, next) => {
-  // const allDocuments = await orgDocument.find();
-  // res.status(200).json({
-  //   status: 'success',
-  //   data: {
-  //     allDocuments,
-  //   },
-  // });
-
-  const documents = await orgDocument.find();
-  res.status(200).render('mainContentHolder', {
+  const documents = await Document.find();
+  res.render('mainContentHolder', {
     roleOfVisitor: 'admin',
+    sendingInfoAbout: 'documents',
     documents,
   });
-
 };
 
 exports.getOneDocument = async (req, res, next) => {
