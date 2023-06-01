@@ -8,7 +8,7 @@ exports.redirectController = async (req, res, next) => {
   // res.status(200).render('allDocuments', {
   //   documents,
   // });
-  const roleOfVisitor = 'super-admin'
+  const roleOfVisitor = 'admin'
   let redirectPath = url.format({
     protocol: req.protocol,
     host: req.get('host'),
@@ -19,6 +19,6 @@ exports.redirectController = async (req, res, next) => {
   } else if (roleOfVisitor === 'super-admin') {
     redirectPath += 'users';
   }
-  console.log(redirectPath)
+  res.redirect(redirectPath);
   res.end();
 };

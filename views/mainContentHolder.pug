@@ -1,0 +1,38 @@
+extends base
+
+block content
+  main.container
+    h3.text-center.mt-5.mb-5 Документы отделения "#{documents[0].department.name}" за 2023 г.
+    - let documentNumber = 1
+      if roleOfVisitor === 'admin'
+        button.btn.btn-success.mb-2 + Добавить запис
+        .table-responsive
+          table.table.table-bordered
+            thead
+              tr.text-center
+                th №
+                th Тип документа
+                th Номер документа
+                th Заголовок документа
+                th Краткая информация о документе
+                th 
+            tbody
+            each document in documents
+              tr
+                td.text-center= documentNumber
+                td.text-center= document.docType
+                td.text-center= document.number
+                td.text-center= document.title
+                td.text-center= document.description
+                td.d-flex.align-items-center.justify-content-center
+                  button.btn.btn-success
+                    img(src='/images/download.svg', alt='Скачать', width='25', height='25')
+                  button.btn.btn-warning.mx-2
+                    img(src='/images/edit.svg', alt='Скачать', width='25', height='25')
+                  button.btn.btn-danger
+                    img(src='/images/delete.svg', alt='Скачать', width='25', height='25')
+                - documentNumber++
+      else if roleOfVisitor === 'user'
+        h1 Hello user
+
+      
