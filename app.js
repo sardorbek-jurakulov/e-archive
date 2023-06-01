@@ -21,9 +21,8 @@ app.set('views', path.join(__dirname, 'views'));
 
 // ROUTES
 app.use('/', viewRoutes);
-
-// app.use('/departments', departmentRoutes);
-// app.use('/users', userRoutes);
-// app.use('/documents', documentRoutes);
+app.use('/departments', departmentRoutes);
+app.use('/users', userRoutes);
+app.use('/documents', documentRoutes);
 
 module.exports = app;

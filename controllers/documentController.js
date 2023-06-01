@@ -1,12 +1,17 @@
 const Document = require('../models/documentModel');
 
 exports.getAllDocuments = async (req, res, next) => {
-  const allDocuments = await Document.find();
-  res.status(200).json({
-    status: 'success',
-    data: {
-      allDocuments,
-    },
+  // const allDocuments = await Document.find();
+  // res.status(200).json({
+  //   status: 'success',
+  //   data: {
+  //     allDocuments,
+  //   },
+  // });
+
+  const documents = await orgDocument.find();
+  res.status(200).render('allDocuments', {
+    documents,
   });
 
 };
