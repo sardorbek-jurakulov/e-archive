@@ -1,6 +1,7 @@
 const path = require('path');
 const express = require('express');
 const url = require('url');
+const cookieParser = require('cookie-parser');
 
 const viewRoutes = require('./routes/viewRoutes');
 const departmentRoutes = require('./routes/departmentRoutes');
@@ -16,6 +17,7 @@ app.use(
 app.use(
   express.static(path.join(__dirname, 'public'))
 );
+app.use(cookieParser());
 
 app.set('view engine', 'pug');
 app.set('views', path.join(__dirname, 'views'));

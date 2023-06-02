@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
-const Department = require('../models/userModel');
+// const Department = require('../models/userModel');
 
 const userSchema = new mongoose.Schema({
   firstName: {
@@ -63,6 +63,10 @@ userSchema.pre(/^find/, function (next) {
   });
   next();
 });
+
+userSchema.methods.correctPassword = async function(condidatePassword, userPassword) {
+  return await bcrypt.compare(condidatePassword, userPassword);
+};
 
 const User = mongoose.model('User', userSchema);
 

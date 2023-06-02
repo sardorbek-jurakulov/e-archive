@@ -1,5 +1,8 @@
 const router = require('express').Router();
 const documentController = require('../controllers/documentController');
+const authController = require('../controllers/authController');
+
+router.use(authController.protect);
 
 router
   .route('/')
