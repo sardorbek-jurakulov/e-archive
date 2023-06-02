@@ -4,14 +4,9 @@ const mongoose = require('mongoose');
 
 dotenv.config({ path: './config.env' });
 const DB = process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD);
-
-const run = async (DB) => {
-  await mongoose.connect(DB, { useNewUrlParser: true }).then(() => {
-    console.log('DB connection successful!');
-  });
-};
-
-run(DB);
+mongoose.connect(DB, { useNewUrlParser: true }).then(() => {
+  console.log('DB connection successful!');
+});
 
 const PORT = process.env.PORT || 3001;
 app.listen(PORT, () => {
