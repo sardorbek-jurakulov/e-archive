@@ -1,7 +1,7 @@
 const crypto = require('crypto');
+const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
-const { promisify } = require('util');
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -20,13 +20,19 @@ const createSendToken = (user, statusCode, req, res) => {
 
   user.password = undefined;
 
-  res.status(statusCode).json({
-    status: 'success',
-    token,
-    data: {
-      user,
-    },
+  // res.status(statusCode).json({
+  //   status: 'success',
+  //   token,
+  //   data: {
+  //     user,
+  //   },
+  // });
+  const redirectPath = url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl
   });
+  res.redirect(redirectPath);
 };
 
 exports.login = async (req, res, next) => {
@@ -38,12 +44,7 @@ exports.login = async (req, res, next) => {
   const user = await User.findOne({ personnelNumber }).select('+password');
 
   if (!user || !(await user.correctPassword(password, user.password))) {
-    let redirectPath = url.format({
-      protocol: req.protocol,
-      host: req.get('host'),
-      pathname: req.originalUrl
-    }) + '/users/login';
-    res.redirect(redirectPath);
+    res.render('login');
   }
 
   createSendToken(user, 200, req, res);

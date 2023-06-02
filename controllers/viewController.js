@@ -20,5 +20,4 @@ exports.redirectController = async (req, res, next) => {
     redirectPath += 'users';
   }
   res.redirect(redirectPath);
-  // res.end();
 };

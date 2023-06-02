@@ -4,7 +4,7 @@ exports.getAllDepartments = async (req, res, next) => {
   const departments = await Department.find();
 
   res.render('mainContentHolder', {
-    roleOfVisitor: 'super-admin',
+    roleOfVisitor: req.user.role || 'user',
     sendingInfoAbout: 'departments',
     departments,
   });

@@ -1,14 +1,22 @@
-extends base
-
-block content
-  main.container.mt-3
-    h2 Вход на e-archive.airtech.uz
-    form(action='#', method="POST")
-      .mb-3.mt-3
-        label(for='email') Email:
-        input#email.form-control(type='email' placeholder='Enter email' name='email')
-      .mb-3
-        label(for='pwd') Password:
-        input#pwd.form-control(type='password' placeholder='Enter password' name='pswd')
-      button.btn.btn-primary(type='submit') Submit
+doctype html
+html(lang="en")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    link(rel='shortcut icon' type='image/svg' href='/images/logo.svg')
+    link(rel="stylesheet" type="text/css" href="/css/bootstrap.min.css")
+    link(rel="stylesheet" type="text/css" href="/css/main.css")
+    title e-archive.airtech.uz
+  body
+    main.container.mt-3
+      h2 Вход на e-archive.airtech.uz
+      form(action='#', method="POST")
+        .mb-3.mt-3
+          label(for='email') Email:
+          input#email.form-control(type='email' placeholder='Enter email' name='email')
+        .mb-3
+          label(for='pwd') Password:
+          input#pwd.form-control(type='password' placeholder='Enter password' name='pswd')
+        button.btn.btn-primary(type='submit') Submit
 
