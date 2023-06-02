@@ -2,6 +2,7 @@ const crypto = require('crypto');
 const { promisify } = require('util');
 const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
+const url = require('url');
 
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
@@ -53,6 +54,12 @@ exports.login = async (req, res, next) => {
 exports.protect = async (req, res, next) => {
   // 1) Getting token and check of it's there
   let token;
+  const redirectPath = url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    // pathname: req.originalUrl
+  }) + '/users/login';
+  
   if (req.headers.authorization && req.headers.authorization.startsWith('Bearer', 0)) {
     token = req.headers.authorization.split(' ')[1];
   } else if (req.cookies.jwt) {
@@ -60,7 +67,8 @@ exports.protect = async (req, res, next) => {
   }
   
   if(!token) {
-    res.render('login');
+    // res.redirect('login');
+    res.redirect(redirectPath);
   }
   // 2) Verification token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
@@ -68,7 +76,8 @@ exports.protect = async (req, res, next) => {
   // 3) Check if user still exists
   const currentUser = await User.findById(decoded.id);
   if (!currentUser) {
-    res.render('login');
+    // res.render('login');
+    res.redirect(redirectPath);
   }
 
   // 4) Check if user changed password after the token was issued
