@@ -2,14 +2,15 @@ import axios from 'axios';
 
 export const login = async (personnelNumber, password) => {
   try {
-    await axios({
-      method: 'POST',
-      url: '/users/login',
-      data: {
-        personnelNumber,
-        password
-      }
-    });
+    // await axios({
+    //   method: 'POST',
+    //   url: '/users/login',
+    //   data: {
+    //     personnelNumber,
+    //     password
+    //   }
+    // });
+    console.log(personnelNumber, password);
 
     // const res = await axios({
     //   method: 'POST',
