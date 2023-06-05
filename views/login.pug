@@ -11,12 +11,12 @@ html(lang="en")
   body
     main.container.mt-3
       h2 Вход на e-archive.airtech.uz
-      form(action='#', method="POST")
+      form(action='#', method="POST").form--login
         .mb-3.mt-3
-          label(for='email') Email:
-          input#email.form-control(type='email' placeholder='Enter email' name='email')
+          label(for='personnelNumber') Табельный номер:
+          input#personnelNumber.form-control(type='number' placeholder='Введите табельный номер' name='personnelNumber')
         .mb-3
-          label(for='pwd') Password:
-          input#pwd.form-control(type='password' placeholder='Enter password' name='pswd')
+          label(for='pwd') Пароль:
+          input#pwd.form-control(type='password' placeholder='Введите пароль' name='pwd')
         button.btn.btn-primary(type='submit') Submit
 
