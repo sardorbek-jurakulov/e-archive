@@ -4,7 +4,8 @@ exports.getAllDocuments = async (req, res, next) => {
   // TODO request qilayotgan userni rolini ko'rish kerak agar uni roli admin, yoki user bo'lmasa unga bu sahifani ochib bermaslik kerak, javobga sizda bu page'ga access yo'q deb errorPage'ni ochib berish kerak.
   const documents = await Document.find();
   res.render('mainContentHolder', {
-    roleOfVisitor: req.user.role || 'user',
+    // roleOfVisitor: req.user.role || 'user',
+    roleOfVisitor: 'user',
     sendingInfoAbout: 'documents',
     documents,
   });

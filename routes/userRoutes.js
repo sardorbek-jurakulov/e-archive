@@ -9,7 +9,7 @@ router
   })
   .post(authController.login);
 
-router.use(authController.protect);
+// router.use(authController.protect);
 
 router
   .route('/')
