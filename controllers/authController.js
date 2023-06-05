@@ -4,6 +4,14 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const url = require('url');
 
+const redirectPath = (req) => { 
+  url.format({
+    protocol: req.protocol,
+    host: req.get('host'),
+    pathname: req.originalUrl
+  });
+}
+
 const signToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
@@ -28,12 +36,12 @@ const createSendToken = (user, statusCode, req, res) => {
   //     user,
   //   },
   // });
-  const redirectPath = url.format({
-    protocol: req.protocol,
-    host: req.get('host'),
-    pathname: req.originalUrl
-  });
-  res.redirect(redirectPath);
+  // const redirectPath = url.format({
+  //   protocol: req.protocol,
+  //   host: req.get('host'),
+  //   pathname: req.originalUrl
+  // });
+  res.redirect(redirectPath(req));
 };
 
 exports.login = async (req, res, next) => {
@@ -44,8 +52,8 @@ exports.login = async (req, res, next) => {
 
   const user = await User.findOne({ personnelNumber }).select('+password');
 
-  if (!user || !(await user.correctPassword(password, user.password))) {
-    res.render('login');
+  if (!user || !(await user.correctPassword(password, user.password))) { 
+    res.redirect(redirectPath(req) + 'users/login');
   }
 
   createSendToken(user, 200, req, res);
@@ -68,8 +76,8 @@ exports.protect = async (req, res, next) => {
   
   if(!token) {
     // res.redirect('login');
-    res.redirect(redirectPath);
-    return next();
+    return res.redirect(redirectPath);
+    // return next();
   }
 
   // 2) Verification token
@@ -79,18 +87,18 @@ exports.protect = async (req, res, next) => {
   const currentUser = await User.findById(decoded.id);
   if (!currentUser) {
     // res.render('login');
-    res.redirect(redirectPath);
-    return next();
+    return res.redirect(redirectPath);
+    // return next();
   }
 
   // 4) Check if user changed password after the token was issued
-  if (currentUser.changedPasswordAfter(decoded.iat)) {
-    res.redirect(redirectPath);
-    return next();
-  }
+  // if (currentUser.changedPasswordAfter(decoded.iat)) {
+  //   res.redirect(redirectPath);
+  //   return next();
+  // }
   
   // GRANT ACCESS TO PROTECTED ROUTE
   req.user = currentUser;
-  res.locals.user = currentUser;
+  // res.locals.user = currentUser;
   next();
 };

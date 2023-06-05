@@ -1,25 +1,34 @@
-/* eslint-disable */
 import axios from 'axios';
 
-export const login = async (email, password) => {
+export const login = async (personnelNumber, password) => {
   try {
-    const res = await axios({
+    await axios({
       method: 'POST',
-      url: '/api/v1/users/login',
+      url: '/users/login',
       data: {
-        email,
+        personnelNumber,
         password
       }
     });
 
-    if (res.data.status === 'success') { 
-      showAlert('success', 'Logged in successfully!');
-      window.setTimeout(() => {
-        location.assign('/');
-      }, 1500);
-    }
+    // const res = await axios({
+    //   method: 'POST',
+    //   url: '/users/login',
+    //   data: {
+    //     personnelNumber,
+    //     password
+    //   }
+    // });
+
+    // if (res.data.status === 'success') { 
+    //   showAlert('success', 'Logged in successfully!');
+    //   window.setTimeout(() => {
+    //     location.assign('/');
+    //   }, 1500);
+    // }
   } catch (err) {
-    showAlert('error', err.response.data.message);
+    // showAlert('error', err.response.data.message);
+    console.log(`Error has been occured: \n` + err );
   }
 };
 

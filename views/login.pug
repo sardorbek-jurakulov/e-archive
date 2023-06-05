@@ -11,7 +11,7 @@ html(lang="en")
   body
     main.container.mt-3
       h2 Вход на e-archive.airtech.uz
-      form(action='#', method="POST").form--login
+      form(action='localhost:3001/users/login' method='POST')
         .mb-3.mt-3
           label(for='personnelNumber') Табельный номер:
           input#personnelNumber.form-control(type='number' placeholder='Введите табельный номер' name='personnelNumber')
