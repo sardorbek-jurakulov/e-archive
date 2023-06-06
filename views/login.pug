@@ -14,12 +14,10 @@ html(lang="en")
       form.form--login
         .mb-3.mt-3
           label(for='personnelNumber') Табельный номер:
-          input#personnelNumber.form-control(type='number' placeholder='Введите табельный номер' name='personnelNumber')
+          input#personnelNumber.form-control(type='number' placeholder='Введите табельный номер' name='personnelNumber' required)
         .mb-3
           label(for='pwd') Пароль:
-          input#pwd.form-control(type='password' placeholder='Введите пароль' name='pwd')
+          input#pwd.form-control(type='password' placeholder='Введите пароль' name='pwd' required)
         button.btn.btn-primary(type='submit') Submit
     //- SCRIPTS
-    script(src='/js/index.js')
-    script(src='/js/test.js')
-
+    script(src='/js/bundled/index.js')

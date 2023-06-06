@@ -4,7 +4,7 @@
   "description": "Project for keeping records of documents belonging to departments at \"UAT\" LLC | Проект ведения учета документов, принадлежащих подразделениям ООО \"УАТ\"",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack",
     "start": "node server.js",
     "start:dev": "nodemon server.js"
   },
@@ -35,5 +35,9 @@
     "pug": "^3.0.2",
     "util": "^0.12.5",
     "utils": "^0.3.1"
+  },
+  "devDependencies": {
+    "web": "^0.0.2",
+    "webpack-cli": "^5.1.3"
   }
 }

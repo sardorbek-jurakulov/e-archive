@@ -4,11 +4,10 @@ const jwt = require('jsonwebtoken');
 const User = require('../models/userModel');
 const url = require('url');
 
-const redirectPath = (req) => { 
-  url.format({
+const redirectPath = (req) => {
+  return url.format({
     protocol: req.protocol,
     host: req.get('host'),
-    pathname: req.originalUrl
   });
 }
 
@@ -41,7 +40,8 @@ const createSendToken = (user, statusCode, req, res) => {
   //   host: req.get('host'),
   //   pathname: req.originalUrl
   // });
-  res.redirect(redirectPath(req));
+  console.log(redirectPath(req));
+  res.redirect(redirectPath(req) + '/');
 };
 
 exports.login = async (req, res, next) => {

@@ -8,7 +8,7 @@ exports.redirectController = async (req, res, next) => {
   // res.status(200).render('allDocuments', {
   //   documents,
   // });
-  const roleOfVisitor = 'admin'
+  const roleOfVisitor = req.user?.role || 'user';
   let redirectPath = url.format({
     protocol: req.protocol,
     host: req.get('host'),

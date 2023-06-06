@@ -1,4 +1,5 @@
 import axios from 'axios';
+import { showAlert } from './alerts';
 
 export const login = async (personnelNumber, password) => {
   try {
@@ -10,25 +11,24 @@ export const login = async (personnelNumber, password) => {
     //     password
     //   }
     // });
-    console.log(personnelNumber, password);
 
-    // const res = await axios({
-    //   method: 'POST',
-    //   url: '/users/login',
-    //   data: {
-    //     personnelNumber,
-    //     password
-    //   }
-    // });
+    const res = await axios({
+      method: 'POST',
+      url: '/users/login',
+      data: {
+        personnelNumber,
+        password
+      }
+    });
 
-    // if (res.data.status === 'success') { 
-    //   showAlert('success', 'Logged in successfully!');
-    //   window.setTimeout(() => {
-    //     location.assign('/');
-    //   }, 1500);
-    // }
+    if (res.data.status === 'success') { 
+      showAlert('success', 'Logged in successfully!');
+      window.setTimeout(() => {
+        location.assign('/');
+      }, 1500);
+    }
   } catch (err) {
-    // showAlert('error', err.response.data.message);
+    showAlert('error', err.response.data.message);
     console.log(`Error has been occured: \n` + err );
   }
 };
